@@ -4,12 +4,10 @@
 local function gh(repo) return 'https://github.com/' .. repo end
 
 vim.pack.add {
-  gh 'mileszs/ack.vim',
   gh 'ruanyl/vim-gh-line',
   gh 'nvim-lua/plenary.nvim',
   gh 'NeogitOrg/neogit', -- formerly TimUntersberger/neogit
   gh 'tpope/vim-fugitive', -- Use both fugitive and neogit while I evaluate neogit
-  gh 'nvim-lualine/lualine.nvim',
   gh 'kdheepak/tabline.nvim',
   gh 'numToStr/Comment.nvim',
   gh 'sindrets/diffview.nvim',
