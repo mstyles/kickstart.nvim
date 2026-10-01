@@ -26,3 +26,10 @@ require('Comment').setup {
     line = '<C-c>',
   },
 }
+
+vim.pack.add { gh 'MeanderingProgrammer/render-markdown.nvim' }
+
+require('render-markdown').setup {
+  completions = { lsp = { enabled = true } }, -- checkbox/callout completions via LSP
+}
+vim.keymap.set('n', '<leader>tm', '<cmd>RenderMarkdown buf_toggle<cr>', { desc = '[T]oggle [M]arkdown rendering' })

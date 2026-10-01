@@ -67,6 +67,10 @@
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
+    "render-markdown.nvim": {
+      "rev": "640a3ec6d538bad17c328be373c7cad0293d9589",
+      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+    },
     "tabline.nvim": {
       "rev": "ff33d12a20d52daafa5393162cae4108faf8128b",
       "src": "https://github.com/kdheepak/tabline.nvim"
