@@ -99,7 +99,7 @@ do
   vim.g.maplocalleader = ' '
 
   -- Set to true if you have a Nerd Font installed and selected in the terminal
-  vim.g.have_nerd_font = false
+  vim.g.have_nerd_font = true
 
   -- [[ Setting options ]]
   --  See `:help vim.o`
@@ -113,7 +113,7 @@ do
   -- vim.o.relativenumber = true
 
   -- Enable mouse mode, can be useful for resizing splits for example!
-  vim.o.mouse = 'a'
+  vim.o.mouse = ''
 
   -- Don't show the mode, since it's already in the status line
   vim.o.showmode = false
@@ -122,7 +122,9 @@ do
   --  Schedule the setting after `UiEnter` because it can increase startup-time.
   --  Remove this option if you want your OS clipboard to remain independent.
   --  See `:help 'clipboard'`
-  vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+  -- vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+
+  vim.wo.wrap = false
 
   -- Enable break indent
   vim.o.breakindent = true
@@ -185,6 +187,8 @@ do
   --  See `:help hlsearch`
   vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+  vim.keymap.set('n', ';', ':')
+
   -- Diagnostic Config & Keymaps
   --  See `:help vim.diagnostic.Opts`
   vim.diagnostic.config {
@@ -229,16 +233,30 @@ do
   --  Use CTRL+<hjkl> to switch between windows
   --
   --  See `:help wincmd` for a list of all window commands
-  vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-  vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-  vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-  vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+  -- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+  -- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+  -- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+  -- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+  vim.keymap.set('n', '<Tab>', '<C-w><C-w>', { desc = 'Move focus to the next window' })
 
   -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
   -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
   -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
   -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
   -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+  vim.keymap.set('n', '<C-j>', '<ESC>:bp<CR>', { desc = 'Previous buffer' })
+  vim.keymap.set('n', '<C-k>', '<ESC>:bn<CR>', { desc = 'Next buffer' })
+  vim.keymap.set('n', '<leader>c', '::bp |bd #<CR>', { desc = 'Close current buffer' })
+
+  vim.keymap.set('n', '<leader>v', ':e ~/.config/nvim/init.lua<CR>', { desc = 'Edit init.vim config' })
+
+  vim.keymap.set('n', '<leader>ru', ':! php %<CR>', { desc = 'run the thing' })
+  vim.keymap.set('n', '<leader>u', ':!docker compose exec api vendor/bin/phpunit %<CR>', { desc = 'run phpunit tests' })
+
+  vim.keymap.set('n', '<CR>', ':noh<CR><CR>:<backspace>', { desc = 'enter clears highlight' })
+
+  vim.keymap.set('v', '<leader>y', '"+y<CR>', { desc = 'yank to system clipboard' })
 
   -- [[ Basic Autocommands ]]
   --  See `:help lua-guide-autocommands`
